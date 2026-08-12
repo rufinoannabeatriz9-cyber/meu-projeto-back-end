@@ -1,91 +1,30 @@
-# Backend com Node.js, TypeScript e Express
+# meu-projeto-back-end
+<h1 align="center">TypeScript + Express Backend</h1> <p align="center"> <b>Projeto de desenvolvimento de servidor com Node.js</b><br> <sub>visual moderno • organizado • interativo • colorido</sub> </p> <p align="center"> <a href="#sobre"><img src="https://img.shields.io/badge/sobre-ff69b4?style=for-the-badge"></a> <a href="#instalacao"><img src="https://img.shields.io/badge/instalação-8a2be2?style=for-the-badge"></a> <a href="#estrutura"><img src="https://img.shields.io/badge/estrutura-00cfff?style=for-the-badge"></a> <a href="#execucao"><img src="https://img.shields.io/badge/execução-00ff9c?style=for-the-badge"></a> </p>
+<a name="sobre"></a> Sobre
 
-> Projeto desenvolvido para aprender a configurar um ambiente **Backend** utilizando **Node.js**, **TypeScript** e **Express**.
+Este projeto apresenta a criação de um servidor backend utilizando TypeScript, Node.js e Express.
 
----
+O projeto utiliza:
 
-## Tecnologias
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white)
-
----
-
-## Sumário
-
-- [Sobre o projeto](#sobre-o-projeto)
-- [Preparando o ambiente](#preparando-o-ambiente)
-- [Instalando o Express](#instalando-o-express)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Criando o servidor](#criando-o-servidor)
-- [Configurando o package.json](#configurando-o-packagejson)
-- [Executando o servidor](#executando-o-servidor)
-- [Como funciona](#como-funciona)
-- [Tecnologias utilizadas](#tecnologias-utilizadas)
-- [Comandos principais](#comandos-principais)
-- [Status](#status)
-
----
-
-## Sobre o projeto
-
-Este projeto apresenta a configuração inicial de um ambiente **Backend** utilizando **TypeScript** e **Express**.
-
-O objetivo é criar um servidor HTTP simples que ficará disponível na porta `8081`.
-
-### Fluxo do projeto
-
-text
-Cliente
-   |
-   | Requisição HTTP
-   v
+TypeScript
+Node.js
 Express
-   |
-   | Processamento
-   v
-Servidor
-   |
-   v
-localhost:8081
-Preparando o ambiente
+TSX
+npm
+HTTP
+Servidor local
 
-Primeiro, inicialize o projeto Node.js:
+O servidor será executado na porta 8081.
 
+<a name="instalacao"></a> Instalação
+01 — Criar o projeto
 npm init -y
-
-Depois, instale o TypeScript e as ferramentas necessárias:
-
 npm i -D typescript @types/node tsx
-
-Crie o arquivo de configuração do TypeScript:
-
 npx tsc --init
-Função de cada comando
-Comando	Função
-npm init -y	Cria o arquivo package.json
-npm i -D typescript	Instala o TypeScript
-@types/node	Adiciona os tipos do Node.js
-tsx	Executa arquivos TypeScript
-npx tsc --init	Cria o tsconfig.json
-Instalando o Express
-
-Instale o framework Express:
-
+02 — Instalar o Express
 npm install express
-
-Depois, instale os tipos do Express para o TypeScript:
-
 npm install -D @types/express
-
-O Express facilita a criação de servidores web e APIs utilizando Node.js.
-
-Estrutura do projeto
-
-A estrutura inicial ficará assim:
-
+<a name="estrutura"></a> Estrutura do projeto
 meu-projeto-backend/
 │
 ├── node_modules/
@@ -95,113 +34,112 @@ meu-projeto-backend/
 │
 ├── package.json
 │
+├── package-lock.json
+│
 └── tsconfig.json
-Criando o servidor
+Servidor Express
 
-Crie o arquivo:
+O arquivo responsável pelo servidor será:
 
 src/app.ts
-
-Dentro dele, adicione:
-
+Código do servidor
+// Importa a biblioteca Express e também o tipo Express
+// O Express será utilizado para criar o servidor web
 import express from "express";
 import type { Express } from "express";
 
+// Cria uma aplicação Express
+// A função express() devolve um objeto que representa o servidor da aplicação
 const app: Express = express();
 
+// Define a porta onde o servidor ficará disponível
+// Neste caso, o servidor poderá ser acessado pela porta 8081
 const PORT: number = 8081;
 
+// Inicializa o servidor utilizando a porta definida
+// O método listen() faz o servidor começar a "escutar" requisições HTTP
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
-Como funciona
-Importando o Express
-import express from "express";
-import type { Express } from "express";
+Configuração do package.json
 
-Importa a biblioteca Express e o tipo Express para utilização com TypeScript.
-
-Criando a aplicação
-const app: Express = express();
-
-Cria uma aplicação Express que será utilizada como nosso servidor.
-
-Definindo a porta
-const PORT: number = 8081;
-
-Define a porta 8081 onde o servidor ficará disponível.
-
-Iniciando o servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
-
-O método listen() inicia o servidor e faz com que ele fique aguardando requisições HTTP.
-
-Configurando o package.json
-
-Abra o arquivo package.json.
-
-Na propriedade "scripts", adicione:
+No arquivo package.json, configure o script:
 
 "scripts": {
-    "dev": "tsx watch src/app.ts"
+  "dev": "tsx watch src/app.ts"
 }
 
-Esse comando permite executar o servidor utilizando o tsx.
+Esse comando permite executar o arquivo TypeScript e reiniciar o servidor automaticamente quando houver alterações.
 
-O watch também permite que o servidor seja reiniciado automaticamente quando o código for alterado.
+<a name="execucao"></a> Executar o projeto
 
-Executando o servidor
-
-No terminal, execute:
+No terminal, utilize:
 
 npm run dev
 
 Se tudo estiver funcionando corretamente, será exibido:
 
 Servidor rodando em http://localhost:8081
+Acessar o servidor
 
-O servidor estará disponível em:
+Abra o navegador e acesse:
 
 http://localhost:8081
 
-Fluxo de execução
-npm run dev
-      |
-      v
-tsx watch src/app.ts
-      |
-      v
-Express
-      |
-      v
-Servidor HTTP
-      |
-      v
-Porta 8081
-      |
-      v
-http://localhost:8081
-Tecnologias utilizadas
-Tecnologia	Função
-Node.js	Ambiente para execução do Backend
-TypeScript	Linguagem utilizada no desenvolvimento
-Express	Framework para criação do servidor
-tsx	Execução de arquivos TypeScript
-npm	Gerenciamento de pacotes
-Comandos principais
-Inicialização
+O servidor estará disponível localmente na porta:
+
+8081
+Progresso
+Etapa	Progresso	Status
+Criar projeto Node.js	██████████ 100%	Concluído
+Instalar TypeScript	██████████ 100%	Concluído
+Instalar Express	██████████ 100%	Concluído
+Criar app.ts	██████████ 100%	Concluído
+Configurar package.json	██████████ 100%	Concluído
+Executar servidor	██████████ 100%	Concluído
+Gráfico visual
+Node.js       ▰▰▰▰▰▰▰▰▰▰ 100%
+TypeScript    ▰▰▰▰▰▰▰▰▰▰ 100%
+Express       ▰▰▰▰▰▰▰▰▰▰ 100%
+Servidor      ▰▰▰▰▰▰▰▰▰▰ 100%
+Configuração  ▰▰▰▰▰▰▰▰▰▰ 100%
+Tecnologias
+<p align="center"> <img src="https://img.shields.io/badge/TypeScript-ff69b4?style=for-the-badge"> <img src="https://img.shields.io/badge/Node.js-8a2be2?style=for-the-badge"> <img src="https://img.shields.io/badge/Express-00cfff?style=for-the-badge"> <img src="https://img.shields.io/badge/npm-00ff9c?style=for-the-badge"> </p>
+Fluxo do projeto
 npm init -y
-Instalação do TypeScript
+      │
+      ▼
+Instalar TypeScript
+      │
+      ▼
+Instalar Express
+      │
+      ▼
+Criar src/app.ts
+      │
+      ▼
+Configurar package.json
+      │
+      ▼
+npm run dev
+      │
+      ▼
+Servidor Express
+      │
+      ▼
+localhost:8081
+Comandos utilizados
+Criar projeto
+npm init -y
+Instalar TypeScript
 npm i -D typescript @types/node tsx
-Configuração do TypeScript
+Criar configuração do TypeScript
 npx tsc --init
-Instalação do Express
+Instalar Express
 npm install express
-Tipos do Express
+Instalar tipos do Express
 npm install -D @types/express
-Executar o servidor
+Executar servidor
 npm run dev
 Estrutura final
 meu-projeto-backend/
@@ -212,8 +150,8 @@ meu-projeto-backend/
 │   └── app.ts
 │
 ├── package.json
-│
+├── package-lock.json
 └── tsconfig.json
-Status
-
-Projeto desenvolvido para estudos de Backend, Node.js, TypeScript e Express.
+Autora
+<p align="center"> <b>Anna Beatriz Rufino de Araújo</b> </p> <p align="center"> Desenvolvimento de Sistemas </p>
+<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=ff69b4&height=100&section=footer"/> </p>
